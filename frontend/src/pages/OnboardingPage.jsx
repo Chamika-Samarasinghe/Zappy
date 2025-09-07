@@ -2,14 +2,9 @@ import { useState } from "react";
 import useAuthUser from "../hooks/useAuthUser";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { completeOnboarding } from "../lib/api";
-import {
-  CameraIcon,
-  LoaderIcon,
-  MapPin,
-  ShuffleIcon,
-  Zap,
-} from "lucide-react";
+import { CameraIcon, LoaderIcon, MapPin, ShuffleIcon, Zap } from "lucide-react";
 import { LANGUAGES } from "../constants";
+import toast from "react-hot-toast";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
@@ -30,6 +25,9 @@ const OnboardingPage = () => {
       toast.success("Profile onboarded successfully");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
+    onError: (error) => {
+      toast.error(error.response.data.message);
+    },
   });
 
   const handleSubmit = (e) => {
@@ -38,7 +36,13 @@ const OnboardingPage = () => {
     onboardingMutation(formState);
   };
 
-  const handleRandomAvatar = () => {};
+  const handleRandomAvatar = () => {
+    const idx = Math.floor(Math.random() * 100) + 1; // 1-100 included
+    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+
+    setFormState({ ...formState, profilePic: randomAvatar });
+    toast.success("Random profile picture generated!");
+  };
 
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-center p-4">

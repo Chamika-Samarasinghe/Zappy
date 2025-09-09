@@ -16,7 +16,7 @@ const Sidebar = () => {
       {/* LOGO */}
       <div className="p-5 border-b border-base-300">
         <Link to="/" className="flex items-center gap-2.5">
-          <Zap className="side-9 text-primary" />
+          <Zap className="size-9 text-primary" />
           <span
             className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r
                 from-primary to-secondary tracking-wider"
@@ -28,7 +28,7 @@ const Sidebar = () => {
       <nav className="flex-1 p-4 space-y-1">
         {/* HOME TAB */}
         <Link
-          to=""
+          to="/"
           className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
             currentPath === "/" ? "btn-active" : ""
           }`}

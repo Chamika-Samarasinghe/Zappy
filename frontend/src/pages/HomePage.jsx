@@ -16,7 +16,7 @@ import {
 import FriendCard from "../components/FriendCard.jsx";
 import NoFriendsFound from "../components/NoFriendsFound.jsx";
 import { getLanguageFlag } from "../components/FriendCard.jsx";
-
+import { capitalize } from "../lib/utils.js";
 const HomePage = () => {
   const queryClient = useQueryClient();
   const [outgoingRequestsIds, setOutgoingRequestsIds] = useState(new Set());
@@ -184,4 +184,4 @@ const HomePage = () => {
 
 export default HomePage;
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+

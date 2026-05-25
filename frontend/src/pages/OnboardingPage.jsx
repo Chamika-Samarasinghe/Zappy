@@ -5,6 +5,7 @@ import { completeOnboarding } from "../lib/api";
 import { CameraIcon, LoaderIcon, MapPin, ShuffleIcon, Zap } from "lucide-react";
 import { LANGUAGES } from "../constants";
 import toast from "react-hot-toast";
+import AvatarImage from "../components/AvatarImage.jsx";
 
 const OnboardingPage = () => {
   const { authUser } = useAuthUser();
@@ -37,8 +38,8 @@ const OnboardingPage = () => {
   };
 
   const handleRandomAvatar = () => {
-    const idx = Math.floor(Math.random() * 100) + 1; // 1-100 included
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+    const seed = Math.random().toString(36).substring(2, 10);
+    const randomAvatar = `https://api.dicebear.com/9.x/adventurer/png?seed=${seed}`;
 
     setFormState({ ...formState, profilePic: randomAvatar });
     toast.success("Random profile picture generated!");
@@ -57,7 +58,7 @@ const OnboardingPage = () => {
               {/* IMAGE PREVIEW */}
               <div className="size-32 round-full bg-base-300 overflow-hidden">
                 {formState.profilePic ? (
-                  <img
+                  <AvatarImage
                     src={formState.profilePic}
                     alt="Profile Preview"
                     className="w-full h-full object-cover"

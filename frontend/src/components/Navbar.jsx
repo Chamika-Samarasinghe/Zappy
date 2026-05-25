@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { BellIcon, LogOutIcon, Zap } from "lucide-react";
 import ThemeSelector from "./ThemeSelector.jsx";
 import useLogout from "../hooks/useLogout.js";
+import AvatarImage from "./AvatarImage.jsx";
 
 const Navbar = () => {
   const { authUser } = useAuthUser();
@@ -42,11 +43,7 @@ const Navbar = () => {
 
             <div className="avatar">
               <div className="w-9 rounded-full">
-                <img
-                  src={authUser?.profilePic}
-                  alt="User Avatar"
-                  rel="noreferrer"
-                />
+                <AvatarImage src={authUser?.profilePic} alt={authUser?.fullName || "User Avatar"} />
               </div>
             </div>
             {/* LOGOUT BUTTON */}

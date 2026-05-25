@@ -16,6 +16,7 @@ import {
 import FriendCard from "../components/FriendCard.jsx";
 import NoFriendsFound from "../components/NoFriendsFound.jsx";
 import { getLanguageFlag } from "../components/FriendCard.jsx";
+import AvatarImage from "../components/AvatarImage.jsx";
 import { capitalize } from "../lib/utils.js";
 const HomePage = () => {
   const queryClient = useQueryClient();
@@ -120,7 +121,7 @@ const HomePage = () => {
                     <div className="card-body p-5 space-y-4">
                       <div className="flex items-center gap-3">
                         <div className="avatar size-16 rounded-full">
-                          <img src={user.profilePic} alt={user.fullName} />
+                          <AvatarImage src={user.profilePic} alt={user.fullName} />
                         </div>
                         <div>
                           <h3 className="font-semibold text-lg">
